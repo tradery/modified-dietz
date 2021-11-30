@@ -20,6 +20,14 @@ describe("dietz isNumeric()", () => {
         expect(dietz.isNumeric("[0,1]")).to.be.false
     })
 
+    it("should return false for NaN", () => {
+        expect(dietz.isNumeric(0/0)).to.be.false
+    })
+
+    it("should return false for Infinity", () => {
+        expect(dietz.isNumeric(1/0)).to.be.false
+    })
+
 })
 
 describe("dietz sum()", () => {
@@ -34,14 +42,22 @@ describe("dietz sum()", () => {
 
 })
 
-describe("dietz getModifiedDietz()", () => {
+describe("dietz ModifiedDietz()", () => {
 
     it("should return the modified dietz return correctly when cash flows exist", () => {
-        expect(dietz.getModifiedDietz(1000, 1200, [500, 0, -800, 0]) === 0.425531914893617).to.be.true
+        expect(dietz.ModifiedDietz(1000, 1200, [500, 0, -800, 0]) === 0.425531914893617).to.be.true
     })
 
     it("should return the modified dietz return correctly without cash flows", () => {
-        expect(dietz.getModifiedDietz(1000, 1200) === 0.2).to.be.true
+        expect(dietz.ModifiedDietz(1000, 1200) === 0.2).to.be.true
+    })
+
+    it("should return the modified dietz return correctly with zero values", () => {
+        expect(dietz.ModifiedDietz(0, 0) === 0).to.be.true
+    })
+
+    it("should return the modified dietz return correctly with infinite values", () => {
+        expect(dietz.ModifiedDietz(0, 1) === 0).to.be.true
     })
 
 })

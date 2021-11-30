@@ -8,7 +8,7 @@
  * @param {Array} cashflows An array of cash flows, one value for each unit of time in the period.
  * @returns 
  */
-function getModifiedDietz(startingBalance, endingBalance, cashflows = []) {
+function ModifiedDietz(startingBalance, endingBalance, cashflows = []) {
     if (!isNumeric(startingBalance)) throw ('`startingBalance` must be a number!');
     if (!isNumeric(endingBalance)) throw ('`startingBalance` must be a number!');
     if (!Array.isArray(cashflows)) throw ('`cashflows` must be an array!');
@@ -23,11 +23,12 @@ function getModifiedDietz(startingBalance, endingBalance, cashflows = []) {
         denominator += cashflows[i] * (1 - ((i + 1) / periods));
     }
 
-    return numerator / denominator;
+    const ratio = numerator / denominator;
+    return (!isNumeric(ratio)) ? 0 : ratio;
 }
 
 function isNumeric(num) {
-    return !isNaN(num)
+    return !isNaN(num) && isFinite(num);
 }
 
 function sum(arr) {
@@ -36,4 +37,4 @@ function sum(arr) {
     }, 0);
 }
 
-module.exports = { getModifiedDietz, isNumeric, sum };
+module.exports = { ModifiedDietz, isNumeric, sum };
