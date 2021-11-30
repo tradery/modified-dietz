@@ -1,6 +1,6 @@
 {
   "name": "modified-dietz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The Modified Dietz Return is an algebraic method used to calculate the rate of return of an investment portfolio based on the cash flows of the portfolio. The method also accounts for the timing of when the cash flows come in and out of the portfolio.",
   "main": "index.js",
   "scripts": {
